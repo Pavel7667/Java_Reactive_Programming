@@ -13,6 +13,12 @@ public class FluxFromMono {
         Flux<String> flux = Flux.from(mono);
         doSomething(flux);
         flux.subscribe(Utils.onNext());
+
+
+        Flux.range(1, 10)
+                .filter(integer -> integer > 3)
+                .next()
+                .subscribe(Utils.onNext(), Utils.onError(), Utils.onComplete());
     }
 
     private static void doSomething(Flux<String> flux) {
