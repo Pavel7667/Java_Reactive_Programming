@@ -1,5 +1,6 @@
 package org.reactor.mono;
 
+import org.reactor.utils.Utils;
 import reactor.core.publisher.Mono;
 
 public class MonoSubscribe {
@@ -15,10 +16,11 @@ public class MonoSubscribe {
         // 2. for err take error Message onError == catching StackTrace !!!
         // 3. terminated operation onCompiled
         mono.subscribe(
-                item -> System.out.println(item),
-                err -> System.out.println(err.getMessage()),
-                () -> System.out.println("Completed")
+                Utils.onNext(),
+                Utils.onError(),
+                Utils.onComplete()
         );
+
     }
 
 }
