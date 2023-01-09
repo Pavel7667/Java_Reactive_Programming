@@ -10,12 +10,12 @@ public class SupplierRefactoring {
     public static void main(String[] args) {
 
         getName();
-        getName()
+        String name = getName()
                 .subscribeOn(Schedulers.boundedElastic()) // add Asynchronous
-                .subscribe(Utils.onNext()); // call Terminate method
+                .block();
+        System.out.println(name);
         getName();
 
-        Utils.sleepSeconds(4); // block main Thread
     }
 
 
@@ -23,6 +23,7 @@ public class SupplierRefactoring {
      * This method Build PipeLine without Terminate method.
      * In this case when we call this method, nothing happened at all
      * until we call Terminate method
+     *
      * @return random name
      */
     public static Mono<String> getName() {
