@@ -3,6 +3,8 @@ package org.reactor.mono;
 import org.reactor.utils.Utils;
 import reactor.core.publisher.Mono;
 
+import java.util.concurrent.Callable;
+
 public class MonoSupplier {
 
     public static void main(String[] args) {
@@ -13,6 +15,9 @@ public class MonoSupplier {
 
         Mono<String> mono = Mono.fromSupplier(() -> getName());
         mono.subscribe(Utils.onNext());
+
+        Callable<String> stringCallable = ()->getName();
+        Mono.fromCallable(stringCallable).subscribe(Utils.onNext());
     }
 
     public static String getName() {
