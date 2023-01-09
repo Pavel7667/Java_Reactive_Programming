@@ -23,7 +23,15 @@ public class Utils {
         return () -> System.out.println("Completed !!!");
     }
 
-    public  static Faker faker(){
+    public static Faker faker() {
         return FAKER;
+    }
+
+    public static void sleepSeconds(int seconds) {
+        try {
+            Thread.sleep(seconds * 1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }
