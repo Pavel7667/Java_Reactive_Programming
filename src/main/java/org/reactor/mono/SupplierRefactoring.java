@@ -2,15 +2,20 @@ package org.reactor.mono;
 
 import org.reactor.utils.Utils;
 import reactor.core.publisher.Mono;
+import reactor.core.scheduler.Scheduler;
+import reactor.core.scheduler.Schedulers;
 
 public class SupplierRefactoring {
 
     public static void main(String[] args) {
 
         getName();
-        getName().subscribe(Utils.onNext()); // call Terminate method
+        getName()
+                .subscribeOn(Schedulers.boundedElastic()) // add Asynchronous
+                .subscribe(Utils.onNext()); // call Terminate method
         getName();
 
+        Utils.sleepSeconds(4); // block main Thread
     }
 
 
