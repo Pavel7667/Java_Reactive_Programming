@@ -15,7 +15,6 @@ public class MonoFromFuture {
         Utils.sleepSeconds(1);
 
     }
-
     private static CompletableFuture<String> getName() {
         return CompletableFuture.supplyAsync(() -> Utils.faker().name().fullName());
     }
