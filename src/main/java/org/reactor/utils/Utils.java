@@ -1,6 +1,8 @@
 package org.reactor.utils;
 
 import com.github.javafaker.Faker;
+import org.reactivestreams.Subscriber;
+import org.reactor.flux.DefaultSubscriber;
 
 import java.util.function.Consumer;
 
@@ -33,5 +35,12 @@ public class Utils {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+    public static Subscriber<Object> subscriber() {
+        return new DefaultSubscriber();
+    }
+
+    public static Subscriber<Object> subscriber(String name) {
+        return new DefaultSubscriber(name);
     }
 }
