@@ -11,9 +11,10 @@ public class FluxCheckIsCanceled {
                     String country;
                     do {
                         country = Utils.faker().country().name();
-                        System.out.println("pushing  !!! "+ country);
+                        System.out.println("pushing  !!! " + country);
                         fluxSink.next(country);
-                    } while (!country.toLowerCase().equals("canada"));
+                    } while (!country.toLowerCase().equals("canada") &&
+                            fluxSink.isCancelled());
                 })
                 .take(4) // in this case subscriber doesn't work after 4
                 .subscribe(Utils.subscriber());
