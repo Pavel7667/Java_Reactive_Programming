@@ -30,12 +30,17 @@ public class Utils {
     }
 
     public static void sleepSeconds(int seconds) {
+        sleepMills(seconds * 1000);
+    }
+
+    public static void sleepMills(int mills) {
         try {
-            Thread.sleep(seconds * 1000);
+            Thread.sleep(mills);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
+
     public static Subscriber<Object> subscriber() {
         return new DefaultSubscriber();
     }
