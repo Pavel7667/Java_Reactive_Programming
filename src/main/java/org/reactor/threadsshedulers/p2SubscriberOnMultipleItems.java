@@ -10,21 +10,20 @@ public class p2SubscriberOnMultipleItems {
     public static void main(String[] args) {
         Flux<Object> flux = Flux.create(fluxSink -> {
             printThreadName("create ");
-            for (int i = 0; i < 20; i++) {
+            for (int i = 0; i < 4; i++) {
                 fluxSink.next(i); // creating of Subscribers
+                Utils.sleepSeconds(1);
             }
             fluxSink.complete();
         }).doOnNext(i -> printThreadName("next " + i));
 
-        // Realize run method for Thread
-        Runnable runnable = () -> flux
+
+        flux
                 .subscribeOn(Schedulers.boundedElastic())
                 .subscribe(v -> printThreadName("sub " + v));
-
-        // Create are 5 Threads for Schedulers
-        for (int i = 0; i < 5; i++) {
-            new Thread(runnable).start();
-        }
+        flux
+                .subscribeOn(Schedulers.parallel())
+                .subscribe(v -> printThreadName("sub " + v));
 
         Utils.sleepSeconds(5);
     }
