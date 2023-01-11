@@ -9,10 +9,11 @@ public class p4Parallel {
     public static void main(String[] args) {
 
 
-        Flux.range(1,10) // count event
-                .parallel(3)// count of Threads i want
+        Flux.range(1,10)
+                .parallel(3)
                 .runOn(Schedulers.parallel())
                 .doOnNext(i -> printThreadName("next" + i)) // publisher
+                .sequential()
                 .subscribe(v -> printThreadName("sub " + v)); // subscriber
 
 
