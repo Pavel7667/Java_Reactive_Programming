@@ -9,11 +9,11 @@ import java.util.function.Consumer;
 
 public class RevenueService {
 
-    private Map<String,Double> db = new HashMap<>();
+    private Map<String,Integer> db = new HashMap<>();
 
     public RevenueService(){
-        db.put("Kids", 0.0);
-        db.put("AutoMotive", 0.0);
+        db.put("Kids", 0);
+        db.put("AutoMotive", 0);
     }
 
     public Consumer<PurchaseOrder> subscribeOrderStream(){
