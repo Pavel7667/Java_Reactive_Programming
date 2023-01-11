@@ -4,7 +4,7 @@ import org.reactor.utils.Utils;
 import reactor.core.publisher.Flux;
 import reactor.core.scheduler.Schedulers;
 
-public class Demo {
+public class Buffer {
 
     public static void main(String[] args) {
         Flux.create(fluxSink -> {
@@ -16,7 +16,7 @@ public class Demo {
                 })
                 .publishOn(Schedulers.boundedElastic())
                 .doOnNext(i -> {
-                    Utils.sleepMills(10);
+                    Utils.sleepSeconds(3);
                 })
                 .subscribe(Utils.subscriber());
 
