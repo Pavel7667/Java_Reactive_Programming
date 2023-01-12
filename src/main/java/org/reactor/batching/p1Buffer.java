@@ -11,15 +11,15 @@ public class p1Buffer {
 
 
         eventStream()
-                .buffer(Duration.ofSeconds(2))
+                .bufferTimeout(5,Duration.ofSeconds(1))
                 .doOnNext(e-> System.out.println("list of "+e.size()))
                 .subscribe(Utils.subscriber());
 
-        Utils.sleepSeconds(10); // we're blocking main Thread to see Scheduler work
+        Utils.sleepSeconds(2); // we're blocking main Thread to see Scheduler work
     }
 
     private static Flux<String> eventStream() {
-        return Flux.interval(Duration.ofMillis(200))
+        return Flux.interval(Duration.ofSeconds(20))
                 .map(i -> "event : " + i);
     }
 }
