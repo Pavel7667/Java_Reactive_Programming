@@ -11,7 +11,7 @@ public class p1Buffer {
 
 
         eventStream()
-                .buffer(3,1)
+                .buffer(3,5)
                 .doOnNext(e-> System.out.println("list of "+e.size()))
                 .subscribe(Utils.subscriber());
 
