@@ -1,4 +1,4 @@
-package org.reactor.assignmentFour;
+package org.reactor.assignment.assignmentFour;
 
 import reactor.core.publisher.Flux;
 

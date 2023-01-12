@@ -1,4 +1,4 @@
-package org.reactor.assignmentTwo;
+package org.reactor.assignment.assignmentTwo;
 
 import org.reactivestreams.Subscriber;
 import org.reactivestreams.Subscription;

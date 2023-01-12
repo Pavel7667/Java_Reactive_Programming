@@ -1,4 +1,4 @@
-package org.reactor.assignmentThree;
+package org.reactor.assignment.assignmentThree;
 
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.SynchronousSink;

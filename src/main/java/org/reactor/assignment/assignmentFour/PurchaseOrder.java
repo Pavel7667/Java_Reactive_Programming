@@ -1,4 +1,4 @@
-package org.reactor.assignmentFour;
+package org.reactor.assignment.assignmentFour;
 
 import lombok.Data;
 import lombok.ToString;
