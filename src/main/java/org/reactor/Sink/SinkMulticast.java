@@ -8,7 +8,7 @@ public class SinkMulticast {
     public static void main(String[] args) {
 
         //  handle through which we would push items
-        Sinks.Many<Object> sink = Sinks.many().multicast().onBackpressureBuffer();
+        Sinks.Many<Object> sink = Sinks.many().multicast().directAllOrNothing();
 
         //  handle through which subscribers will receive items
         Flux<Object> flux = sink.asFlux();
