@@ -12,8 +12,6 @@ public class SinkOneDemo {
         Sinks.One<Object> sink = Sinks.one();
         Mono<Object> mono = sink.asMono();
         mono.subscribe(Utils.subscriber("sam"));
-
-
         sink.tryEmitValue(("hi"));
     }
 }
